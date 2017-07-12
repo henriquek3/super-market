@@ -1,22 +1,25 @@
 $(document).ready(function () {
     $('#content').load('views/home/home.html');
-    $('.item').click(function () {
-        let url = "views/";
-        if ($(this).attr('href')) {
-            url += $(this).attr('href');
-        } else {
-            url += "not-found";
-        }
+
+    var urli = '';
+
+    $('.button').click(function () {
+        urli = $(this).attr('href');
         $.ajax({
-            url : url,
-            method : 'POST'
+            method : "POST",
+            url : urli,
+            dataType : 'html'
+
         })
             .done(function (response) {
-                $('#content').html(response);
-            })
-            .fail(function (response) {
-                $('#content').html("O Request Falhou!");
-            });
+            $('#content').html(response);
+        })
+            .fail(function () {
+            $('#content').html("O Request Falhou!");
+        });
         return false;
     });
+    $('.item').click(function () {
+        return false;
+    })
 });

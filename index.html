@@ -13,21 +13,9 @@
     <title>Super-Market</title>
 </head>
 <body>
-<!-- Menu Superior -->
-<header class="ui green top attached three item inverted menu">
-    <a class="item" id="sidebarButton">
-        <i class="large setting icon"></i>
-    </a>
-    <a class="item" href="home/home">
-        <i class="large home icon"></i>
-    </a>
-    <a class="item">
-        <i class="shopping basket icon"></i>
-    </a>
-</header>
 
 <!-- Menu Lateral -->
-<aside class="ui sidebar vertical menu" id="sidebar">
+<div class="ui sidebar vertical menu">
     <div class="item" style="background-color: #16ab39">
         <img class="ui tiny avatar image" src="https://semantic-ui.com/images/avatar2/large/molly.png">
         <span style="color: white;font-size: large">Username</span>
@@ -35,9 +23,9 @@
     <div class="item">
         <div class="header">Produtos</div>
         <div class="menu">
-            <a class="item" href="produtos/produto-incluir">Incluir Produto</a>
-            <a class="item" href="produtos/marca-incluir">Incluir Marca</a>
-            <a class="item" href="produtos/unidade-incluir">Incluir Unidade</a>
+            <a class="item button" href="views/produtos/produto-incluir.html">Incluir Produto</a>
+            <a class="item button" href="views/produtos/marca-incluir.html">Incluir Marca</a>
+            <a class="item button" href="views/produtos/unidade-incluir.html">Incluir Unidade</a>
         </div>
     </div>
     <div class="item">
@@ -60,23 +48,41 @@
             <a class="item">FAQs</a>
         </div>
     </div>
-</aside>
+</div>
 
-<!-- Content -->
-<main class="ui grid">
-    <section class="column" id="content"></section>
-</main>
+<div class="pusher">
 
-<!-- Menu Inferior -->
-<footer class="ui green bottom fixed two item inverted menu">
-    <a class="item">
-        <i class="shop icon"></i>
-        Lista
-    </a>
-    <a class="item">
-        <i class="bar chart icon"></i>
-        Consultar
-    </a>
-</footer>
+    <!-- Menu Superior -->
+    <header class="ui green top attached three item inverted menu">
+        <a class="item" id="sidebarButton">
+            <i class="large setting icon"></i>
+        </a>
+        <a class="item" href="views/home/home.html">
+            <i class="large home icon"></i>
+        </a>
+        <a class="item">
+            <i class="shopping basket icon"></i>
+        </a>
+    </header>
+
+    <!-- Content -->
+    <main class="ui grid">
+        <section class="column" id="content"></section>
+    </main>
+
+    <!-- Menu Inferior -->
+    <footer class="ui green bottom fixed two item inverted menu">
+        <a class="item">
+            <i class="shop icon"></i>
+            Lista
+        </a>
+        <a class="item">
+            <i class="bar chart icon"></i>
+            Consultar
+        </a>
+    </footer>
+
+
+</div>
 </body>
 </html>
