@@ -1,10 +1,12 @@
 $(document).ready(function () {
     $('#content').load('views/home/home.html');
+
     var urli = '';
+
     $('.button').click(function () {
         urli = $(this).attr('href');
         $.ajax({
-            method : "POST",
+            method: "GET",
             url : urli,
             dataType : 'html'
 
@@ -19,7 +21,5 @@ $(document).ready(function () {
     });
     $('.item').click(function () {
         return false;
-    });
-
-
+    })
 });
