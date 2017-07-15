@@ -9,7 +9,7 @@ $(document).ready(function () {
             url : urli,
             dataType : 'html'
         });
-        request.done(function (response) {
+        request.done(function (response) {            
             $('#content').html(response);
         });
         request.fail(function () {

@@ -19,16 +19,19 @@
         <tbody id="tableMarcas"></tbody>
     </table>
 </div>
+
 <!-- Modal -->
+<script>$('body .modals').remove();</script>
 <div class="ui modal">
     <div class="header">Incluir</div>
     <div class="content">
-        <form action="" class="ui form">
+        <form class="ui form">
             <input type="text" placeholder="Nova Marca" id="inputNomeMarca">
         </form>
     </div>
     <div class="actions">
         <button class="small ui approve green button" id="gravar">Gravar</button>
+        <button class="small ui approve blue button" id="alterar">Alterar</button>
         <button class="small ui cancel button">Sair</button>
     </div>
 </div>
