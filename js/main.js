@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('.sidebar.item').css({fontSize : '+=10'});
     $('#content').load('views/home/home.html');
 
     $('.item .button').click(function () {
@@ -20,5 +21,10 @@ $(document).ready(function () {
 
     $('.item').click(function () {
         return false;
-    })
+    });
+
+    $('#sair').click(function () {
+        //onsole.log('sair');
+        navigator.app.exitApp();
+    });
 });
