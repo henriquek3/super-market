@@ -1,3 +1,50 @@
-<div class="ui blue segment">
-    <h1>Este é o cadastro de Produtos</h1>
+<div class="ui center aligned grid huge header">
+    <p>Produtos</p>
 </div>
+<div class="ui divider"></div>
+<div class="ui fluid container">
+    <table class="ui unstackable table">
+        <thead>
+        <tr>
+            <th class="">Nome</th>
+            <th>Marca</th>
+            <th>Unidade</th>
+            <th></th>
+            <th>
+                <button id="modalShow" class="mini circular ui icon right floated blue button">
+                    <i class="plus icon"></i>
+                </button>
+            </th>
+        </tr>
+        </thead>
+        <tbody id="tableProdutos"></tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<script>$('body .modals').remove();</script>
+<div class="ui modal">
+    <div class="header"></div>
+    <div class="content">
+        <form class="ui form">
+            <div class="field">
+                <label for="marcas">Marca</label>
+                <select name="marcas" id="marcas" class="ui dropdown"></select>
+            </div>
+            <div class="field">
+                <label for="unidades">Unidades</label>
+                <select name="unidades" id="unidades" class="ui dropdown"></select>
+            </div>
+            <div class="field">
+                <label for="inputNomeProduto">Produto</label>
+                <input type="text" placeholder="Novo Produto" id="inputNomeProduto">
+            </div>
+        </form>
+    </div>
+    <div class="actions">
+        <button class="small ui approve green button" id="gravar">Gravar</button>
+        <button class="small ui approve blue button" id="alterar">Alterar</button>
+        <button class="small ui cancel button">Sair</button>
+    </div>
+</div>
+<script src="js/Produtos.js"></script>
