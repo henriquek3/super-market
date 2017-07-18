@@ -7,6 +7,7 @@
         <thead>
         <tr>
             <th class="">Nome</th>
+            <th>Sigla</th>
             <th></th>
             <th>
                 <button id="modalShow" class="mini circular ui icon right floated blue button">
@@ -25,7 +26,14 @@
     <div class="header"></div>
     <div class="content">
         <form class="ui form">
-            <input type="text" placeholder="Nova Unidade" id="inputNomeUnidade">
+            <div class="field">
+                <label for="inputNomeUnidade">Nome</label>
+                <input type="text" placeholder="Nova Unidade" id="inputNomeUnidade">
+            </div>
+            <div class="field">
+                <label for="inputSiglaUnidade">Sigla</label>
+                <input type="text" id="inputSiglaUnidade">
+            </div>
         </form>
     </div>
     <div class="actions">

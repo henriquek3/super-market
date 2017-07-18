@@ -5,7 +5,7 @@ $('#modalShow').click(function () {
     $('.ui.modal').modal('show');
     $('#alterar').hide();
     $('#gravar').show();
-    $('div .header').text('Incluir');
+    $('.modal .header').text('Incluir');
 });
     
 var listaMarcas = [{
@@ -73,8 +73,8 @@ function modal(id) {
     idMarca = id;
     $('#inputNomeMarca').val(nome);
     $('.ui.modal').modal('show');
-    $('div .header').text('Alterar');
-};
+    $('.modal.header').text('Alterar');
+}
 
 $('#alterar').click(function () {
     /* Act on the event */

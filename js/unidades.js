@@ -5,19 +5,18 @@ $('#modalShow').click(function () {
     $('.ui.modal').modal('show');
     $('#alterar').hide();
     $('#gravar').show();
-    $('div .header').text('Incluir');
+    $('.modal .header').text('Incluir');
 });
 
-var listaUnidades = [{
-    "nome": "jean"
-}];
+var listaUnidades = [{}];
 var idUnidade = '';
 
 function setLista(list) {
     var table = '';
     for (var key in list) {
         var jean = "jean";
-        table += '<tr><td class="twelve wide field">' + list[key].nome + '</td>';
+        table += '<tr><td class="four wide field">' + list[key].nome + '</td>';
+        table += '<td class="four wide field">' + list[key].sigla + '</td>';
         table += '<td><button onclick="modal(' + key + ');" class="mini circular ui icon green button"><i class="edit icon"></i></button></td>';
         table += '<td><button onclick="deleteData(' + key + ')" class="mini circular ui icon red button"><i class="remove icon"></i></button></td></tr>';
     }
@@ -26,7 +25,8 @@ function setLista(list) {
 
 function addData() {
     var nome = $('#inputNomeUnidade').val();
-    listaUnidades.unshift({"nome": nome});
+    var sigla = $('#inputSiglaUnidade').val();
+    listaUnidades.unshift({"nome": nome, "sigla" : sigla});
     setLista(listaUnidades);
     saveStorage(listaUnidades);
     $('#inputNomeUnidade').val('');
@@ -59,11 +59,13 @@ function deleteData(id) {
     saveStorage(listaUnidades);
 };
 
-function alterData(id, nome) {
+function alterData(id, nome, sigla) {
     listaUnidades[id].nome = nome;
+    listaUnidades[id].sigla = sigla;
     setLista(listaUnidades);
     saveStorage(listaUnidades);
     $('#inputNomeUnidade').val('');
+    $('#inputSiglaUnidade').val('');
 }
 
 function modal(id) {
@@ -73,13 +75,14 @@ function modal(id) {
     idUnidade = id;
     $('#inputNomeUnidade').val(nome);
     $('.ui.modal').modal('show');
-    $('div .header').text('Alterar');
+    $('.modal .header').text('Alterar');
 };
 
 $('#alterar').click(function () {
     /* Act on the event */
     var nome = $('#inputNomeUnidade').val();
-    alterData(idUnidade, nome);
+    var sigla = $('#inputSiglaUnidade').val();
+    alterData(idUnidade, nome, sigla);
 });
 
 

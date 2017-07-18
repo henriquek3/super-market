@@ -8,27 +8,27 @@ function setLista(list) {
     var table = '';
     for (var key in list) {
         table += '<tr><td class="six wide field">' + list[key].nome + '</td>';
-        table += '<td class="four wide field">' + list[key].marca + '</td>';
-        table += '<td class="four wide field">' + list[key].unidade + '</td>';
-        table += '<td><button onclick="modal(' + key + ');" class="mini circular ui icon green button"><i class="edit icon"></i></button><button onclick="deleteData(' + key + ')" class="mini circular ui icon red button"><i class="remove icon"></i></button></td>';
-        //table += '<td><button onclick="deleteData(' + key + ')" class="mini circular ui icon red button"><i class="remove icon"></i></button></td></tr>';
+        table += '<td class="four wide field">' + listaMarcas[list[key].marca].nome + '</td>';
+        table += '<td class="four wide field">' + listaUnidades[list[key].unidade].nome + '</td>';
+        table += '<td><button onclick="modal(' + key + ');" class="mini circular ui icon green button"><i class="edit icon"></i></button>';
+        table += '<td><button onclick="deleteData(' + key + ')" class="mini circular ui icon red button"><i class="remove icon"></i></button></td></tr>';
     }
     $('#tableProdutos').html(table);
 }
 
 
-function getMarcas(list) {
-    var option = '<option selected="selected">Marcas</option>';
+function setTableMarcas(list) {
+    var option = '<option selected>Marcas</option>';
     for (var key in list) {
         option += '<option value="' + key + '">' + list[key].nome + '</option>'
     }
     $('#marcas').html(option);
 }
 
-function getUnidades(list) {
-    var option = '<option selected="selected">Marcas</option>';
+function setTableUnidades(list) {
+    var option = '<option selected>Marcas</option>';
     for (var key in list) {
-        option += '<option value="' + key + '">' + list[key].nome + '</option>'
+        option += '<option class="optunidades" value="' + key + '">' + list[key].nome + '</option>'
     }
     $('#unidades').html(option);
 }
@@ -38,7 +38,7 @@ function addData() {
     var marca = $('#marcas').val();
     var unidade = $('#unidades').val();
     listaProdutos.unshift({"nome": nome, "marca": marca, "unidade": unidade});
-    console.log("nome: " + nome + "| Marca" + marca + "| unidade:" + unidade);
+    console.log("nome: " + nome + "| Marca: " + marca + "| unidade: " + unidade);
     setLista(listaProdutos);
     saveStorage(listaProdutos);
     $('#inputNomeProduto').val('');
@@ -90,11 +90,16 @@ function modal(id) {
     $('#gravar').hide();
     $('#alterar').show();
     var nome = listaProdutos[id].nome;
+    var marca = listaProdutos[id].marca;
+    var unidade = listaProdutos[id].unidade;
     idProduto = id;
     $('#inputNomeProduto').val(nome);
+    $('.optunidades').find('option:selected').val(marca);
     $('.ui.modal').modal('show');
     $('.modal .header').text('Alterar');
-};
+    setTableUnidades(listaUnidades);
+    setTableMarcas(listaMarcas);
+}
 
 $('#alterar').click(function () {
     /* Act on the event */
@@ -115,6 +120,6 @@ $('#modalShow').click(function () {
     $('#alterar').hide();
     $('#gravar').show();
     $('.modal .header').text('Incluir');
-    getUnidades(listaUnidades);
-    getMarcas(listaMarcas);
+    setTableUnidades(listaUnidades);
+    setTableMarcas(listaMarcas);
 });
