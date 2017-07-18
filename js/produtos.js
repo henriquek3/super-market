@@ -94,11 +94,12 @@ function modal(id) {
     var unidade = listaProdutos[id].unidade;
     idProduto = id;
     $('#inputNomeProduto').val(nome);
-    $('.optunidades').find('option:selected').val(marca);
     $('.ui.modal').modal('show');
     $('.modal .header').text('Alterar');
     setTableUnidades(listaUnidades);
     setTableMarcas(listaMarcas);
+    $('.ui.modal').find('#marcas').val(marca);
+    $('.ui.modal').find('#unidades').val(unidade);
 }
 
 $('#alterar').click(function () {

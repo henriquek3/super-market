@@ -2,6 +2,7 @@ $('.ui.modal').modal('setting', 'closable', false);
 
 $('#modalShow').click(function () {
     $('#inputNomeUnidade').val('');
+    $('#inputsiglaunidade').val('');
     $('.ui.modal').modal('show');
     $('#alterar').hide();
     $('#gravar').show();
@@ -30,6 +31,7 @@ function addData() {
     setLista(listaUnidades);
     saveStorage(listaUnidades);
     $('#inputNomeUnidade').val('');
+    $('#inputSiglaUnidade').val('');
 }
 
 function saveStorage(obj) {
@@ -72,8 +74,10 @@ function modal(id) {
     $('#gravar').hide();
     $('#alterar').show();
     var nome = listaUnidades[id].nome;
+    var sigla = listaUnidades[id].sigla;
     idUnidade = id;
     $('#inputNomeUnidade').val(nome);
+    $('#inputSiglaUnidade').val(sigla);
     $('.ui.modal').modal('show');
     $('.modal .header').text('Alterar');
 };
