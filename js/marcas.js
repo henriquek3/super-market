@@ -57,7 +57,7 @@ function deleteData(id){
     }
     setLista(listaMarcas);
     saveStorage(listaMarcas);
-};
+}
 
 function alterData(id, nome) {
     listaMarcas[id].nome = nome;
@@ -73,7 +73,7 @@ function modal(id) {
     idMarca = id;
     $('#inputNomeMarca').val(nome);
     $('.ui.modal').modal('show');
-    $('.modal.header').text('Alterar');
+    $('.modal .header').text('Alterar');
 }
 
 $('#alterar').click(function () {
