@@ -1,8 +1,26 @@
 $('.ui.modal').modal('setting', 'closable', false);
 
-var listaProdutos = [{}];
-
+var listaProdutos;
+var listaUnidades;
+var listaMarcas;
 var idProduto = '';
+
+function initStorage() {
+    var produtos = localStorage.getItem("listaProdutos");
+    if (produtos) {
+        listaProdutos = JSON.parse(produtos);
+    }
+    var marcas = localStorage.getItem("listaMarcas");
+    if (marcas) {
+        listaMarcas = JSON.parse(marcas);
+    }
+    var unidades = localStorage.getItem("listaUnidades");
+    if (unidades) {
+        listaUnidades = JSON.parse(unidades);
+    }
+    setLista(listaProdutos);
+}
+initStorage();
 
 function setLista(list) {
     var table = '';
@@ -12,8 +30,10 @@ function setLista(list) {
         table += '<td class="four wide field">' + listaUnidades[list[key].unidade].sigla + '</td>';
         table += '<td><button onclick="modal(' + key + ');" class="mini circular ui icon green button"><i class="edit icon"></i></button>';
         table += '<td><button onclick="deleteData(' + key + ')" class="mini circular ui icon red button"><i class="remove icon"></i></button></td></tr>';
+        /*
         console.log(listaMarcas[list[key].marca].nome);
         console.log(list[key].marca);
+        */
     }
     $('#tableProdutos').html(table);
 }
@@ -39,8 +59,12 @@ function addData() {
     var nome = $('#inputNomeProduto').val();
     var marca = $('#marcas').val();
     var unidade = $('#unidades').val();
+    /*
+console.log(nome+"|"+marca+"|"+unidade);
+    console.log(listaProdutos);
+*/
     listaProdutos.unshift({"nome": nome, "marca": marca, "unidade": unidade});
-    console.log("nome: " + nome + "| Marca: " + marca + "| unidade: " + unidade);
+    /*console.log("nome: " + nome + "| Marca: " + marca + "| unidade: " + unidade);*/
     setLista(listaProdutos);
     saveStorage(listaProdutos);
     $('#inputNomeProduto').val('');
@@ -49,22 +73,6 @@ function addData() {
 function saveStorage(obj) {
     var jsonStr = JSON.stringify(obj);
     localStorage.setItem("listaProdutos", jsonStr);
-}
-
-function initStorage() {
-    var produtos = localStorage.getItem("listaProdutos");
-    if (produtos) {
-        listaProdutos = JSON.parse(produtos);
-    }
-    var marcas = localStorage.getItem("listaMarcas");
-    if (marcas) {
-        listaMarcas = JSON.parse(marcas);
-    }
-    var unidades = localStorage.getItem("listaUnidades");
-    if (unidades) {
-        listaUnidades = JSON.parse(unidades);
-    }
-    setLista(listaProdutos);
 }
 
 function deleteData(id) {
@@ -115,7 +123,7 @@ $('#gravar').click(function () {
     addData();
 });
 
-initStorage();
+
 
 $('#modalShow').click(function () {
     $('#inputNomeProduto').val('');
