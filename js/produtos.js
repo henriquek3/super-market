@@ -9,9 +9,11 @@ function setLista(list) {
     for (var key in list) {
         table += '<tr><td class="six wide field">' + list[key].nome + '</td>';
         table += '<td class="four wide field">' + listaMarcas[list[key].marca].nome + '</td>';
-        table += '<td class="four wide field">' + listaUnidades[list[key].unidade].nome + '</td>';
+        table += '<td class="four wide field">' + listaUnidades[list[key].unidade].sigla + '</td>';
         table += '<td><button onclick="modal(' + key + ');" class="mini circular ui icon green button"><i class="edit icon"></i></button>';
         table += '<td><button onclick="deleteData(' + key + ')" class="mini circular ui icon red button"><i class="remove icon"></i></button></td></tr>';
+        console.log(listaMarcas[list[key].marca].nome);
+        console.log(list[key].marca);
     }
     $('#tableProdutos').html(table);
 }
@@ -20,7 +22,7 @@ function setLista(list) {
 function setTableMarcas(list) {
     var option = '<option selected>Marcas</option>';
     for (var key in list) {
-        option += '<option value="' + key + '">' + list[key].nome + '</option>'
+        option += '<option value="' + key + '">' + list[key].nome + '</option>';
     }
     $('#marcas').html(option);
 }
@@ -28,7 +30,7 @@ function setTableMarcas(list) {
 function setTableUnidades(list) {
     var option = '<option selected>Marcas</option>';
     for (var key in list) {
-        option += '<option class="optunidades" value="' + key + '">' + list[key].nome + '</option>'
+        option += '<option class="optunidades" value="' + key + '">' + list[key].nome + '</option>';
     }
     $('#unidades').html(option);
 }
@@ -77,7 +79,7 @@ function deleteData(id) {
     }
     setLista(listaProdutos);
     saveStorage(listaProdutos);
-};
+}
 
 function alterData(id, nome) {
     listaProdutos[id].nome = nome;
